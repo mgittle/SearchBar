@@ -8,58 +8,43 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      productId: 1
+      item: ""
     };
   }
 
   componentDidMount() {
-    for (let i = 0; i < data.length; i++) {
-      let obj = {
-        productId: data[i].productId,
-        productName: data[i].productName,
-        category_id: data[i].category_id
-      };
-
-      axios
-        .post("http://localhost:3000/products", obj)
-        .then(response => {
-          console.log("The post response is:", response);
-        })
-        .catch(err => {
-          console.error("post failed");
+    axios
+      .get("http://localhost:3000/products")
+      .then(response => {
+        this.setState({
+          item: response.data[0].name
         });
-    }
-    // axios
-    //   .get("http://localhost:3000/products")
-    //   .then(response => {
-    //     this.setState({
-    //       productId: response.data.productId
-    //     });
-    //   })
-    //   .catch(err => {
-    //     console.error("warning, error, please head to the nearest exit");
-    //   });
+        console.log("logged", this.state.item);
+      })
+      .catch(err => {
+        console.error("warning, error, please head to the nearest exit");
+      });
   }
 
   //post data from API to database
-  postData() {
-    for (let i = 0; i < data.length; i++) {
-      let obj = {
-        productId: data[i].productId,
-        productName: data[i].productName,
-        category_id: data[i].category_id
-      };
+  // postData() {
+  //   for (let i = 0; i < data.length; i++) {
+  //     let obj = {
+  //       productId: data[i].productId,
+  //       productName: data[i].productName,
+  //       category_id: data[i].category_id
+  //     };
 
-      axios
-        .post("http://localhost:3000/products", obj)
-        .then(response => {
-          console.log("The post response is:", response);
-        })
-        .catch(err => {
-          console.error("post failed");
-        });
-    }
-  }
+  //     axios
+  //       .post("http://localhost:3000/products", obj)
+  //       .then(response => {
+  //         console.log("The post response is:", response);
+  //       })
+  //       .catch(err => {
+  //         console.error("post failed");
+  //       });
+  //   }
+  // }
 
   render() {
     return (

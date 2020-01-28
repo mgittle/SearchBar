@@ -14,7 +14,6 @@ app.use(express.static(__dirname + "/../client/dist"));
 app.get("/products", (req, res) => {
   db.getProducts((err, data) => {
     if (err) throw error;
-    console.log(data);
     res.send(data);
   });
 });
