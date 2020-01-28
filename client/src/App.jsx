@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import data from "./CanadianAPISorryEh.js";
 import Items from "./components/Items.jsx";
+import InputForm from "./components/InputForm.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -53,6 +54,9 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello there, neighbor</h1>
+        <div className="searchbar">
+          <InputForm items={this.state.items} />
+        </div>
         <div className="app">
           <Items items={this.state.items} />
         </div>
