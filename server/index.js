@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/../client/dist"));
 
 app.get("/products", (req, res) => {
-  console.log(req.body);
   db.getProducts((err, data) => {
     if (err) throw error;
+    console.log(data);
     res.send(data);
   });
 });
@@ -23,7 +23,7 @@ app.post("/products", (req, res) => {
   db.insertProduct(
     req.body.productId,
     req.body.productName,
-    category_id,
+    req.body.category_id,
     (err, data) => {
       if (err) throw err;
       res.send(data);

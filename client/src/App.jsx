@@ -13,16 +13,32 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get("http://localhost:3000/products", this.state.productId)
-      .then(response => {
-        this.setState({
-          productId: response.data.productId
+    for (let i = 0; i < data.length; i++) {
+      let obj = {
+        productId: data[i].productId,
+        productName: data[i].productName,
+        category_id: data[i].category_id
+      };
+
+      axios
+        .post("http://localhost:3000/products", obj)
+        .then(response => {
+          console.log("The post response is:", response);
+        })
+        .catch(err => {
+          console.error("post failed");
         });
-      })
-      .catch(err => {
-        console.error("warning, error, please head to the nearest exit");
-      });
+    }
+    // axios
+    //   .get("http://localhost:3000/products")
+    //   .then(response => {
+    //     this.setState({
+    //       productId: response.data.productId
+    //     });
+    //   })
+    //   .catch(err => {
+    //     console.error("warning, error, please head to the nearest exit");
+    //   });
   }
 
   //post data from API to database

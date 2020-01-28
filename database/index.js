@@ -3,7 +3,7 @@ const mysqlConfig = require("./config.js");
 
 const connection = mysql.createConnection(mysqlConfig);
 
-const getProducts = function(productId, callback) {
+const getProducts = function(callback) {
   connection.query(`Select * from products`, (err, data) => {
     if (err) {
       throw err;

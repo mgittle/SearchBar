@@ -16,6 +16,8 @@ CREATE TABLE Products (
   FOREIGN KEY (category_id) REFERENCES Categories (id)
 );
 
+INSERT INTO Categories (id, name) VALUES (1,"Hockey"),(2,"Syrup"),(3,"Music"),(4,"Camping"),(5,"Hunting"),(6,"Food");
+
 /*  Execute this file from the command line by typing:
  *    mysql -u <USER> < schema.sql
  *    OR
