@@ -5,6 +5,9 @@ const InputForm = ({ items }) => {
     <div className="inputform">
       <form>
         <input type="text" name="search" />
+        <button type="submit">
+          <i className="fa fa-search"></i>
+        </button>
       </form>
     </div>
   );

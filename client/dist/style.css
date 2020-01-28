@@ -1,18 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 body {
-  font-family:'Montserrat',sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-h1 {
+.searchbar {
+  background-color: #242f3e;
+}
+
+/* h1 {
   margin: 20px;
-  /* color: #965fdf; */
+  color: #965fdf;
   background: -webkit-linear-gradient(#965fdf, #aa7aef);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} */
 
-.app {
+/* .app {
   display: flex;
   flex-flow: row;
 }
@@ -80,7 +84,7 @@ h1 {
 
 
 .category-list {
-  /* background-color: #965fdf; */
+  background-color: #965fdf;
   background: -webkit-linear-gradient(#965fdf, #aa7aef);
   color: white;
   margin-top: 50px;
@@ -148,4 +152,4 @@ button:hover {
   margin-top: 2px;
   display: flex;
   flex-flow: column;
-}
+} */
