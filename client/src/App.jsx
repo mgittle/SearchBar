@@ -14,6 +14,7 @@ class App extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,11 @@ class App extends React.Component {
 
   handleChange(event) {
     this.setState({ search: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    alert(this.state.search);
   }
 
   //post data from API to database
@@ -64,6 +70,7 @@ class App extends React.Component {
         <div className="searchbar">
           <InputForm
             handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
             search={this.state.search}
             items={this.state.items}
           />
