@@ -9,8 +9,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      items: []
+      items: [],
+      search: ""
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +27,10 @@ class App extends React.Component {
       .catch(err => {
         console.error("warning, error, please head to the nearest exit");
       });
+  }
+
+  handleChange(event) {
+    this.setState({ search: event.target.value });
   }
 
   //post data from API to database
@@ -55,7 +62,11 @@ class App extends React.Component {
       <div>
         <h1>Hello there, neighbor</h1>
         <div className="searchbar">
-          <InputForm items={this.state.items} />
+          <InputForm
+            handleChange={this.handleChange}
+            search={this.state.search}
+            items={this.state.items}
+          />
         </div>
         <div className="app">
           <Items items={this.state.items} />

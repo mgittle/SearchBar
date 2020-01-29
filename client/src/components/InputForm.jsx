@@ -1,10 +1,10 @@
 import React from "react";
 
-const InputForm = ({ items }) => {
+const InputForm = ({ items, search, handleChange }) => {
   return (
     <div className="inputform">
       <form>
-        <input type="text" name="search" />
+        <input type="text" name="search" onChange={handleChange} />
         <button type="submit">
           <i className="fa fa-search"></i>
         </button>
