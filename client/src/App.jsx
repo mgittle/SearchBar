@@ -35,33 +35,37 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    var suggestions = this.props.items.map(item => {
-      return item.name;
-    });
-    var filteredSuggestions = suggestions.filter(suggestion =>
-      suggestion.toLowerCase().indexOf(userInput.toLowerCase())
-    );
-
     this.setState({
-      activeIndex: 0,
-      filteredSuggestions,
-      showSuggestions: true,
       input: event.target.value
     });
+    // var suggestions = this.props.items.map(item => {
+    //   return item.name;
+    // });
+    // var filteredSuggestions = suggestions.filter(suggestion =>
+    //   suggestion.toLowerCase().indexOf(userInput.toLowerCase())
+    // );
+
+    // this.setState({
+    //   activeIndex: 0,
+    //   filteredSuggestions,
+    //   showSuggestions: true,
+    //   input: event.target.value
+    // });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    alert(this.state.search);
+    alert(this.state.input);
   }
 
   handleClick(event) {
-    this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions: [],
-      showSuggestions: false,
-      input: e.currentTarget.innerText
-    });
+    alert(this.state.input);
+    // this.setState({
+    //   activeSuggestion: 0,
+    //   filteredSuggestions: [],
+    //   showSuggestions: false,
+    //   input: e.currentTarget.innerText
+    // });
   }
 
   //post data from API to database
@@ -95,6 +99,7 @@ class App extends React.Component {
           <InputForm
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            handleClick={this.handleClick}
             input={this.state.input}
             items={this.state.items}
           />

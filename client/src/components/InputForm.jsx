@@ -6,10 +6,15 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-import SuggestionList from "./SuggestionList.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const InputForm = ({ items, search, handleChange, handleSubmit }) => {
+const InputForm = ({
+  items,
+  search,
+  handleChange,
+  handleSubmit,
+  handleClick
+}) => {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#home">Saskatchewanizon</Navbar.Brand>
@@ -30,9 +35,16 @@ const InputForm = ({ items, search, handleChange, handleSubmit }) => {
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success">Search</Button>
+        <Form onSubmit={handleSubmit} inline>
+          <FormControl
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+            onChange={handleChange}
+          />
+          <Button onClick={handleClick} variant="outline-success">
+            Search
+          </Button>
         </Form>
       </Navbar.Collapse>
     </Navbar>
