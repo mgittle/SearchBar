@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const InputForm = ({
   categories,
+  currentCategory,
   handleChange,
   handleSubmit,
   handleClick,
@@ -26,7 +27,7 @@ const InputForm = ({
           <DropdownButton
             onSelect={handleSelect}
             id="dropdown-basic-button"
-            title="All Departments"
+            title={currentCategory}
           >
             <Dropdown.Item key="0">All Departments</Dropdown.Item>
             {categories.map((category, i) => {

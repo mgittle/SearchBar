@@ -108,6 +108,7 @@ class App extends React.Component {
             handleClick={this.handleClick}
             handleSelect={this.handleSelect}
             categories={this.state.categories}
+            currentCategory={this.state.currentCategory}
           />
         </div>
       </div>
