@@ -4,47 +4,11 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-.autocomplete {
-  width: 300px;
-  position: relative;
-  display: inline-block;
-}
-
-.autocomplete-items {
-  position: absolute;
-  z-index: 99;
-  top: 100%;
-  left: 0;
-  right: 0;
-}
-
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.autocomplete-items div:hover {
-  background-color: #e9e9e9;
-}
-
 .searchbar {
   background-color: #242f3e;
 }
 
-.tagitem {
-  display: inline-block;
-  margin-left: 10px;
-}
-
-.tags {
-  color: white;
-}
-
-#search {
-  width: 300px;
-}
-
-input {
-  padding: 0;
-  border-width: 0;
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
 }

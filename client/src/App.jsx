@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       items: [],
       categories: [],
-      showSuggestions: false,
+      currentCategory: "",
       input: ""
     };
 
@@ -24,6 +24,7 @@ class App extends React.Component {
     axios
       .get("http://localhost:3000/categories")
       .then(response => {
+        console.log(response);
         this.setState(
           {
             categories: response.data
@@ -106,8 +107,7 @@ class App extends React.Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             handleClick={this.handleClick}
-            input={this.state.input}
-            items={this.state.items}
+            categories={this.state.categories}
           />
         </div>
       </div>

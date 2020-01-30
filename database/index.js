@@ -28,7 +28,7 @@ const getProducts = function(inputString, callback) {
 };
 
 const getCategories = function(callback) {
-  connection.query(`SELECT name FROM Categories`, (err, data) => {
+  connection.query(`SELECT * FROM Categories`, (err, data) => {
     if (err) {
       throw err;
     } else {
