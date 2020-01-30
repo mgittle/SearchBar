@@ -27,6 +27,16 @@ const getProducts = function(inputString, callback) {
   );
 };
 
+const getCategories = function(callback) {
+  connection.query(`SELECT name FROM Categories`, (err, data) => {
+    if (err) {
+      throw err;
+    } else {
+      callback(null, data);
+    }
+  });
+};
+
 const insertProduct = function(productId, productName, category_id, callback) {
   connection.query(
     `Insert into products (id, name, category_id) values ('${productId}', '${productName}','${category_id}')`,
@@ -42,5 +52,6 @@ const insertProduct = function(productId, productName, category_id, callback) {
 
 module.exports = {
   getProducts,
-  insertProduct
+  insertProduct,
+  getCategories
 };

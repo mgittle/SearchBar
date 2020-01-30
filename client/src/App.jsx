@@ -10,8 +10,7 @@ class App extends React.Component {
 
     this.state = {
       items: [],
-      activeIndex: 0,
-      filteredSuggestions: [],
+      categories: [],
       showSuggestions: false,
       input: ""
     };
@@ -21,18 +20,23 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // componentDidMount() {
-  //   axios
-  //     .get("http://localhost:3000/products")
-  //     .then(response => {
-  //       this.setState({
-  //         items: response.data
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.error("warning, error, please head to the nearest exit");
-  //     });
-  // }
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/categories")
+      .then(response => {
+        this.setState(
+          {
+            categories: response.data
+          },
+          () => {
+            console.log(this.state.categories);
+          }
+        );
+      })
+      .catch(err => {
+        console.error("warning, error, please head to the nearest exit");
+      });
+  }
 
   handleChange(event) {
     this.setState(

@@ -19,6 +19,13 @@ app.get("/products", (req, res) => {
   });
 });
 
+app.get("/categories", (req, res) => {
+  db.getCategories((err, data) => {
+    if (err) throw error;
+    res.send(data);
+  });
+});
+
 app.post("/products", (req, res) => {
   db.insertProduct(
     req.body.productId,
