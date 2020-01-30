@@ -16,7 +16,7 @@ const InputForm = ({
   handleClick
 }) => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand href="#home">Saskatchewanizon</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -43,7 +43,7 @@ const InputForm = ({
             onChange={handleChange}
           />
           <Button onClick={handleClick} variant="outline-success">
-            Search
+            <i className="fa fa-search"></i>
           </Button>
         </Form>
       </Navbar.Collapse>
@@ -63,17 +63,6 @@ const InputForm = ({
     //     </button>
     //   </form>
     //   <br />
-    //   <div className="tags">
-    //     <div className="tagitem">Today's Deals</div>
-    //     <div className="tagitem">Best Seller's</div>
-    //     <div className="tagitem">Customer Service</div>
-    //     <div className="tagitem">Find a Gift</div>
-    //     <div className="tagitem">New Releases</div>
-    //     <div className="tagitem">Registry</div>
-    //     <div className="tagitem">Gift Cards</div>
-    //     <div className="tagitem">Sell</div>
-    //   </div>
-    // </div>
   );
 };
 

@@ -12,7 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/../client/dist"));
 
 app.get("/products", (req, res) => {
-  db.getProducts((err, data) => {
+  var inputString = req.query.inputString;
+  db.getProducts(inputString, (err, data) => {
     if (err) throw error;
     res.send(data);
   });

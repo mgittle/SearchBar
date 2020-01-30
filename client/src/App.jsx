@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import data from "./CanadianAPISorryEh.js";
+// import data from "./CanadianAPISorryEh.js";
 import Items from "./components/Items.jsx";
 import InputForm from "./components/InputForm.jsx";
 
@@ -21,36 +21,44 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:3000/products")
-      .then(response => {
-        this.setState({
-          items: response.data
-        });
-      })
-      .catch(err => {
-        console.error("warning, error, please head to the nearest exit");
-      });
-  }
+  // componentDidMount() {
+  //   axios
+  //     .get("http://localhost:3000/products")
+  //     .then(response => {
+  //       this.setState({
+  //         items: response.data
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.error("warning, error, please head to the nearest exit");
+  //     });
+  // }
 
   handleChange(event) {
-    this.setState({
-      input: event.target.value
-    });
-    // var suggestions = this.props.items.map(item => {
-    //   return item.name;
-    // });
-    // var filteredSuggestions = suggestions.filter(suggestion =>
-    //   suggestion.toLowerCase().indexOf(userInput.toLowerCase())
-    // );
-
-    // this.setState({
-    //   activeIndex: 0,
-    //   filteredSuggestions,
-    //   showSuggestions: true,
-    //   input: event.target.value
-    // });
+    this.setState(
+      {
+        input: event.target.value
+      },
+      () => {
+        axios
+          .get("http://localhost:3000/products", {
+            params: { inputString: this.state.input }
+          })
+          .then(response => {
+            this.setState(
+              {
+                items: response.data
+              },
+              () => {
+                console.log(this.state.items);
+              }
+            );
+          })
+          .catch(err => {
+            console.error("warning, error, please head to the nearest exit");
+          });
+      }
+    );
   }
 
   handleSubmit(event) {
@@ -60,12 +68,6 @@ class App extends React.Component {
 
   handleClick(event) {
     alert(this.state.input);
-    // this.setState({
-    //   activeSuggestion: 0,
-    //   filteredSuggestions: [],
-    //   showSuggestions: false,
-    //   input: e.currentTarget.innerText
-    // });
   }
 
   //post data from API to database
@@ -89,9 +91,9 @@ class App extends React.Component {
   // }
 
   render() {
-    if (!this.state.items[0]) {
-      return <span>Loading...</span>;
-    }
+    // if (!this.state.items[0]) {
+    //   return <span>Loading...</span>;
+    // }
 
     return (
       <div>
@@ -104,9 +106,6 @@ class App extends React.Component {
             items={this.state.items}
           />
         </div>
-        {/* <div className="app">
-          <Items items={this.state.items} />
-        </div> */}
       </div>
     );
   }
