@@ -8,7 +8,10 @@ body {
   background-color: #242f3e;
 }
 
-.mr-auto,
-.mx-auto {
-  margin-right: auto !important;
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
 }

@@ -11,13 +11,15 @@ class App extends React.Component {
       items: [],
       categories: [],
       currentCategory: "All Departments",
-      input: ""
+      input: "",
+      showSuggestions: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleCompleteClick = this.handleCompleteClick.bind(this);
   }
 
   componentDidMount() {
@@ -34,11 +36,18 @@ class App extends React.Component {
   }
 
   handleChange(event) {
+    var input = event.target.value;
     this.setState(
       {
-        input: event.target.value
+        input: input
       },
       () => {
+        var element = document.getElementsByClassName("list-group")[0];
+        if (!input) {
+          element.classList.add("hidden");
+        } else {
+          element.classList.remove("hidden");
+        }
         axios
           .get("http://localhost:3000/products", {
             params: {
@@ -47,14 +56,9 @@ class App extends React.Component {
             }
           })
           .then(response => {
-            this.setState(
-              {
-                items: response.data
-              },
-              () => {
-                console.log(this.state.items);
-              }
-            );
+            this.setState({
+              items: response.data
+            });
           })
           .catch(err => {
             console.error("warning, error, please head to the nearest exit");
@@ -72,6 +76,18 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     alert(this.state.input);
+  }
+
+  handleCompleteClick(event) {
+    this.setState(
+      {
+        input: event.target.innerHTML,
+        showSuggestions: false
+      },
+      () => {
+        alert(this.state.input);
+      }
+    );
   }
 
   handleClick(event) {
@@ -107,8 +123,10 @@ class App extends React.Component {
             handleSubmit={this.handleSubmit}
             handleClick={this.handleClick}
             handleSelect={this.handleSelect}
+            handleCompleteClick={this.handleCompleteClick}
             categories={this.state.categories}
             currentCategory={this.state.currentCategory}
+            items={this.state.items.slice(0, 10)}
           />
         </div>
       </div>
