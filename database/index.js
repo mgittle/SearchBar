@@ -14,17 +14,30 @@ const connection = mysql.createConnection(mysqlConfig);
 //   });
 // };
 
-const getProducts = function(inputString, callback) {
-  connection.query(
-    `SELECT * FROM PRODUCTS WHERE NAME LIKE '${inputString}%'`,
-    (err, data) => {
-      if (err) {
-        throw err;
-      } else {
-        callback(null, data);
+const getProducts = function(inputString, currentCategory, callback) {
+  if (currentCategory !== "All Departments") {
+    connection.query(
+      `SELECT p.name FROM Products p INNER JOIN Categories c ON p.category_id = c.id WHERE p.name LIKE '${inputString}%' AND c.name = '${currentCategory}'`,
+      (err, data) => {
+        if (err) {
+          throw err;
+        } else {
+          callback(null, data);
+        }
       }
-    }
-  );
+    );
+  } else {
+    connection.query(
+      `SELECT name from Products WHERE name LIKE '${inputString}%'`,
+      (err, data) => {
+        if (err) {
+          throw err;
+        } else {
+          callback(null, data);
+        }
+      }
+    );
+  }
 };
 
 const getCategories = function(callback) {

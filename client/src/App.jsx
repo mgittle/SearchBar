@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 // import data from "./CanadianAPISorryEh.js";
-import Items from "./components/Items.jsx";
 import InputForm from "./components/InputForm.jsx";
 
 class App extends React.Component {
@@ -11,28 +10,23 @@ class App extends React.Component {
     this.state = {
       items: [],
       categories: [],
-      currentCategory: "",
+      currentCategory: "All Departments",
       input: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentDidMount() {
     axios
       .get("http://localhost:3000/categories")
       .then(response => {
-        console.log(response);
-        this.setState(
-          {
-            categories: response.data
-          },
-          () => {
-            console.log(this.state.categories);
-          }
-        );
+        this.setState({
+          categories: response.data
+        });
       })
       .catch(err => {
         console.error("warning, error, please head to the nearest exit");
@@ -47,7 +41,10 @@ class App extends React.Component {
       () => {
         axios
           .get("http://localhost:3000/products", {
-            params: { inputString: this.state.input }
+            params: {
+              inputString: this.state.input,
+              currentCategory: this.state.currentCategory
+            }
           })
           .then(response => {
             this.setState(
@@ -64,6 +61,12 @@ class App extends React.Component {
           });
       }
     );
+  }
+
+  handleSelect(event, eventkey) {
+    this.setState({
+      currentCategory: eventkey.target.innerHTML
+    });
   }
 
   handleSubmit(event) {
@@ -96,10 +99,6 @@ class App extends React.Component {
   // }
 
   render() {
-    // if (!this.state.items[0]) {
-    //   return <span>Loading...</span>;
-    // }
-
     return (
       <div>
         <div className="searchbar">
@@ -107,6 +106,7 @@ class App extends React.Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             handleClick={this.handleClick}
+            handleSelect={this.handleSelect}
             categories={this.state.categories}
           />
         </div>

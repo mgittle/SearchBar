@@ -13,7 +13,8 @@ app.use(express.static(__dirname + "/../client/dist"));
 
 app.get("/products", (req, res) => {
   var inputString = req.query.inputString;
-  db.getProducts(inputString, (err, data) => {
+  var currentCategory = req.query.currentCategory;
+  db.getProducts(inputString, currentCategory, (err, data) => {
     if (err) throw error;
     res.send(data);
   });

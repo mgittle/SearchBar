@@ -8,7 +8,13 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const InputForm = ({ categories, handleChange, handleSubmit, handleClick }) => {
+const InputForm = ({
+  categories,
+  handleChange,
+  handleSubmit,
+  handleClick,
+  handleSelect
+}) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand href="#home">Saskatchewanizon</Navbar.Brand>
@@ -17,12 +23,15 @@ const InputForm = ({ categories, handleChange, handleSubmit, handleClick }) => {
         <Nav className="justify-content-end">
           <Nav.Link href="#home">Home</Nav.Link>
           <Nav.Link href="#link">Link</Nav.Link>
-          <DropdownButton id="dropdown-basic-button" title="All Departments">
+          <DropdownButton
+            onSelect={handleSelect}
+            id="dropdown-basic-button"
+            title="All Departments"
+          >
+            <Dropdown.Item key="0">All Departments</Dropdown.Item>
             {categories.map((category, i) => {
               return (
-                <Dropdown.Item href={`#/action-${i}`} key={category.id}>
-                  {category.name}
-                </Dropdown.Item>
+                <Dropdown.Item key={category.id}>{category.name}</Dropdown.Item>
               );
             })}
           </DropdownButton>
