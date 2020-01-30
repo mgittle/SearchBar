@@ -10,11 +10,15 @@ class App extends React.Component {
 
     this.state = {
       items: [],
-      search: ""
+      activeIndex: 0,
+      filteredSuggestions: [],
+      showSuggestions: false,
+      input: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -31,12 +35,33 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ search: event.target.value });
+    var suggestions = this.props.items.map(item => {
+      return item.name;
+    });
+    var filteredSuggestions = suggestions.filter(suggestion =>
+      suggestion.toLowerCase().indexOf(userInput.toLowerCase())
+    );
+
+    this.setState({
+      activeIndex: 0,
+      filteredSuggestions,
+      showSuggestions: true,
+      input: event.target.value
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     alert(this.state.search);
+  }
+
+  handleClick(event) {
+    this.setState({
+      activeSuggestion: 0,
+      filteredSuggestions: [],
+      showSuggestions: false,
+      input: e.currentTarget.innerText
+    });
   }
 
   //post data from API to database
@@ -66,18 +91,17 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Hello there, neighbor</h1>
         <div className="searchbar">
           <InputForm
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
-            search={this.state.search}
+            input={this.state.input}
             items={this.state.items}
           />
         </div>
-        <div className="app">
+        {/* <div className="app">
           <Items items={this.state.items} />
-        </div>
+        </div> */}
       </div>
     );
   }
