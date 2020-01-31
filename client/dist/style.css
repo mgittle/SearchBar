@@ -15,3 +15,17 @@ body {
 .show {
   display: flex;
 }
+
+.list-group {
+  position: fixed;
+  left: 25.1%;
+  margin-top: -5px;
+}
+
+.list-group-item {
+  white-space: nowrap;
+  display: block;
+  width: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
