@@ -5,7 +5,7 @@ body {
 }
 
 .searchbar {
-  background-color: #242f3e;
+  background-color: #d6f4f2;
 }
 
 .hidden {
@@ -20,6 +20,7 @@ body {
   position: fixed;
   left: 25.1%;
   margin-top: -5px;
+  width: 1500px;
 }
 
 .list-group-item {
@@ -28,4 +29,9 @@ body {
   width: 20%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+form {
+  margin-bottom: -15px;
+  margin-top: -10px;
 }

@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import ListGroup from "react-bootstrap/ListGroup";
+import InputGroup from "react-bootstrap/InputGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const InputForm = ({
@@ -28,31 +29,35 @@ const InputForm = ({
           <Nav className="justify-content-end">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
-            <DropdownButton
-              onSelect={handleSelect}
-              id="dropdown-basic-button"
-              title={currentCategory}
-            >
-              <Dropdown.Item key="0">All Departments</Dropdown.Item>
-              {categories.map(category => {
-                return (
-                  <Dropdown.Item key={category.id}>
-                    {category.name}
-                  </Dropdown.Item>
-                );
-              })}
-            </DropdownButton>
           </Nav>
-          <Form onSubmit={handleSubmit} inline>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              className="mr-sm-2"
-              onChange={handleChange}
-            />
-            <Button onClick={handleClick} variant="outline-success">
-              <i className="fa fa-search"></i>
-            </Button>
+          <Form onSubmit={handleSubmit}>
+            <InputGroup className="mb-3">
+              <InputGroup.Prepend>
+                <DropdownButton
+                  onSelect={handleSelect}
+                  id="dropdown-basic-button"
+                  title={currentCategory}
+                >
+                  <Dropdown.Item key="0">All Departments</Dropdown.Item>
+                  {categories.map(category => {
+                    return (
+                      <Dropdown.Item key={category.id}>
+                        {category.name}
+                      </Dropdown.Item>
+                    );
+                  })}
+                </DropdownButton>
+              </InputGroup.Prepend>
+              <FormControl
+                onChange={handleChange}
+                aria-label="Item to search for"
+              />
+              <InputGroup.Append>
+                <Button variant="outline-secondary" onClick={handleClick}>
+                  <i className="fa fa-search"></i>
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
           </Form>
         </Navbar.Collapse>
       </Navbar>
