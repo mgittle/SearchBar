@@ -10,9 +10,8 @@ class App extends React.Component {
     this.state = {
       items: [],
       categories: [],
-      currentCategory: "All Departments",
-      input: "",
-      showSuggestions: false
+      currentCategory: "All",
+      input: ""
     };
 
     this.handleChange = this.handleChange.bind(this);

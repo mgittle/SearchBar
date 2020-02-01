@@ -12,6 +12,7 @@
   "license": "",
   "devDependencies": {
     "css-loader": "^3.4.2",
+    "file-loader": "^5.0.2",
     "nodemon": "^1.19.4",
     "style-loader": "^1.1.3"
   },
