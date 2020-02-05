@@ -31,7 +31,7 @@ const getProducts = function(inputString, currentCategory, callback) {
     );
   } else {
     connection.query(
-      `SELECT name from Products WHERE name LIKE '%${inputString}%'`,
+      `SELECT name from Products WHERE name LIKE '${inputString}%'`,
       (err, data) => {
         if (err) {
           throw err;

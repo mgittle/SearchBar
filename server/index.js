@@ -27,17 +27,20 @@ app.get("/categories", (req, res) => {
   });
 });
 
-app.post("/products", (req, res) => {
-  db.insertProduct(
-    req.body.productId,
-    req.body.productName,
-    req.body.category_id,
-    (err, data) => {
-      if (err) throw err;
-      res.send(data);
-    }
-  );
-});
+// app.post(
+//   "http://nodedockersearch-env.z6b7pgpgn9.us-east-2.elasticbeanstalk.com/products",
+//   (req, res) => {
+//     db.insertProduct(
+//       req.body.productId,
+//       req.body.productName,
+//       req.body.category_id,
+//       (err, data) => {
+//         if (err) throw err;
+//         res.send(data);
+//       }
+//     );
+//   }
+// );
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

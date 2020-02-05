@@ -23,7 +23,9 @@ class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:3000/categories")
+      .get(
+        "http://nodedockersearch-env.z6b7pgpgn9.us-east-2.elasticbeanstalk.com/categories"
+      )
       .then(response => {
         this.setState({
           categories: response.data
@@ -48,12 +50,15 @@ class App extends React.Component {
           element.classList.remove("hidden");
         }
         axios
-          .get("http://localhost:3000/products", {
-            params: {
-              inputString: this.state.input,
-              currentCategory: this.state.currentCategory
+          .get(
+            "http://nodedockersearch-env.z6b7pgpgn9.us-east-2.elasticbeanstalk.com/products",
+            {
+              params: {
+                inputString: this.state.input,
+                currentCategory: this.state.currentCategory
+              }
             }
-          })
+          )
           .then(response => {
             this.setState({
               items: response.data

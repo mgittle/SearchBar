@@ -21,10 +21,10 @@ const InputForm = ({
 }) => {
   return (
     <div>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar variant="dark" expand="lg">
         <Navbar.Brand href="#home">
           <img
-            src="../FEC-logo.png"
+            src="http://nodedockersearch-env.z6b7pgpgn9.us-east-2.elasticbeanstalk.com/FEC-logo.png"
             className="d-inline-block align-top"
             alt="Saskatchewanizon logo"
           />
@@ -66,7 +66,16 @@ const InputForm = ({
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <Navbar bg="dark" variant="dark" expand="sm">
+      <ListGroup>
+        {items.map((item, i) => {
+          return (
+            <ListGroup.Item key={i} action onClick={handleCompleteClick}>
+              {item.name}
+            </ListGroup.Item>
+          );
+        })}
+      </ListGroup>
+      <Navbar variant="dark" expand="sm">
         <Nav className="justify-content-center">
           <Nav.Link href="#deals">Today's Deals</Nav.Link>
           <Nav.Link href="#best">Best Sellers</Nav.Link>
@@ -79,15 +88,6 @@ const InputForm = ({
           <Nav.Link href="#amazon">AmazonBasics</Nav.Link>
         </Nav>
       </Navbar>
-      <ListGroup>
-        {items.map((item, i) => {
-          return (
-            <ListGroup.Item key={i} action onClick={handleCompleteClick}>
-              {item.name}
-            </ListGroup.Item>
-          );
-        })}
-      </ListGroup>
     </div>
   );
 };
