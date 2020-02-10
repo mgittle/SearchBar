@@ -31,37 +31,38 @@ const InputForm = ({
             alt="Saskatchewanizon logo"
           />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Form onSubmit={handleSubmit}>
-          <InputGroup className="mb-3">
-            <DropdownButton
-              as={InputGroup.Prepend}
-              variant="light"
-              onSelect={handleSelect}
-              id="dropdown-basic-button"
-              title={currentCategory}
-            >
-              <Dropdown.Item key="0">All</Dropdown.Item>
-              {categories.map(category => {
-                return (
-                  <Dropdown.Item key={category.id}>
-                    {category.name}
-                  </Dropdown.Item>
-                );
-              })}
-            </DropdownButton>
-            <FormControl
-              id="search-input"
-              onChange={handleChange}
-              aria-label="Item to search for"
-            />
-            <InputGroup.Append>
-              <Button onClick={handleClick}>
-                <i className="fa fa-search"></i>
-              </Button>
-            </InputGroup.Append>
-          </InputGroup>
-        </Form>
+        <Nav className="mr-auto">
+          <Form onSubmit={handleSubmit}>
+            <InputGroup className="mb-3">
+              <DropdownButton
+                as={InputGroup.Prepend}
+                variant="light"
+                onSelect={handleSelect}
+                id="dropdown-basic-button"
+                title={currentCategory}
+              >
+                <Dropdown.Item key="0">All</Dropdown.Item>
+                {categories.map(category => {
+                  return (
+                    <Dropdown.Item key={category.id}>
+                      {category.name}
+                    </Dropdown.Item>
+                  );
+                })}
+              </DropdownButton>
+              <FormControl
+                id="search-input"
+                onChange={handleChange}
+                aria-label="Item to search for"
+              />
+              <InputGroup.Append>
+                <Button onClick={handleClick}>
+                  <i className="fa fa-search"></i>
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </Form>
+        </Nav>
         <Nav className="justify-content-end">
           <Nav.Link href="#Language">
             <div className="nav-line-1">EN</div>

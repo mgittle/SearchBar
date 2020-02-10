@@ -40,7 +40,7 @@ body {
   position: absolute;
   left: 215px;
   margin-top: -9px;
-  width: 50.2%;
+  width: 55.15vw;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -63,7 +63,7 @@ body {
 form {
   margin-bottom: -15px;
   margin-top: -10px;
-  width: 50%;
+  width: 55vw;
   height: 40px;
   min-width: 200px;
 }
@@ -189,8 +189,4 @@ form {
 
 .long-count {
   margin-left: 13px !important;
-}
-
-.nav-link-right {
-  margin-right: -20px;
 }
