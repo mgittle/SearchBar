@@ -190,3 +190,14 @@ form {
 .long-count {
   margin-left: 13px !important;
 }
+
+.nav-bottom-middle-links {
+  margin-left: -70px;
+}
+
+.nav-bottom-right-link {
+  color: #fff !important;
+  font-size: 19px;
+  font-weight: 800;
+  padding-top: 15px;
+}

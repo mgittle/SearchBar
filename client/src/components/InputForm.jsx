@@ -105,7 +105,7 @@ const InputForm = ({
         })}
       </ListGroup>
       <Navbar variant="dark">
-        <Nav className="justify-content-center">
+        <Nav className="justify-content-left">
           <Nav.Link href="#Address">
             <div className="nav-dot-icon"></div>
             <div className="nav-address">
@@ -113,6 +113,8 @@ const InputForm = ({
               <div className="nav-line-4">Select your address</div>
             </div>
           </Nav.Link>
+        </Nav>
+        <Nav className="justify-content-center nav-bottom-middle-links mr-auto">
           <Nav.Link href="#deals" className="nav-bottom-links nav-first-bottom">
             Today's Deals
           </Nav.Link>
@@ -139,6 +141,11 @@ const InputForm = ({
           </Nav.Link>
           <Nav.Link href="#amazon" className="nav-bottom-links">
             Saskatchewanazon Basics
+          </Nav.Link>
+        </Nav>
+        <Nav className="justify-content-end">
+          <Nav.Link href="#Devices" className="nav-bottom-right-link">
+            Save on Saskatchewanazon Devices
           </Nav.Link>
         </Nav>
       </Navbar>
