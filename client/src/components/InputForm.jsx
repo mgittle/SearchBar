@@ -17,80 +17,132 @@ const InputForm = ({
   handleSubmit,
   handleClick,
   handleSelect,
-  handleCompleteClick
+  handleCompleteClick,
+  cartCount
 }) => {
   return (
     <div>
-      <Navbar variant="dark" expand="lg">
+      <Navbar variant="dark">
         <Navbar.Brand href="#home">
           <img
+            id="logo-nav"
             src="http://nodedockersearch-env.z6b7pgpgn9.us-east-2.elasticbeanstalk.com/FEC-logo.png"
             className="d-inline-block align-top"
             alt="Saskatchewanizon logo"
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Form onSubmit={handleSubmit}>
-            <InputGroup className="mb-3">
-              <DropdownButton
-                as={InputGroup.Prepend}
-                variant="light"
-                onSelect={handleSelect}
-                id="dropdown-basic-button"
-                title={currentCategory}
-              >
-                <Dropdown.Item key="0">All</Dropdown.Item>
-                {categories.map(category => {
-                  return (
-                    <Dropdown.Item key={category.id}>
-                      {category.name}
-                    </Dropdown.Item>
-                  );
-                })}
-              </DropdownButton>
-              <FormControl
-                onChange={handleChange}
-                aria-label="Item to search for"
-              />
-              <InputGroup.Append>
-                <Button onClick={handleClick}>
-                  <i className="fa fa-search"></i>
-                </Button>
-              </InputGroup.Append>
-            </InputGroup>
-          </Form>
-          <Nav className="justify-content-end">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+        <Form onSubmit={handleSubmit}>
+          <InputGroup className="mb-3">
+            <DropdownButton
+              as={InputGroup.Prepend}
+              variant="light"
+              onSelect={handleSelect}
+              id="dropdown-basic-button"
+              title={currentCategory}
+            >
+              <Dropdown.Item key="0">All</Dropdown.Item>
+              {categories.map(category => {
+                return (
+                  <Dropdown.Item key={category.id}>
+                    {category.name}
+                  </Dropdown.Item>
+                );
+              })}
+            </DropdownButton>
+            <FormControl
+              id="search-input"
+              onChange={handleChange}
+              aria-label="Item to search for"
+            />
+            <InputGroup.Append>
+              <Button onClick={handleClick}>
+                <i className="fa fa-search"></i>
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form>
+        <Nav className="justify-content-end">
+          <Nav.Link href="#Language">
+            <div className="nav-line-1">EN</div>
+            <div className="nav-globe"></div>
+          </Nav.Link>
+          <Nav.Link href="#Account">
+            <div className="nav-line-1">Hello, Sign in</div>
+            <div className="nav-line-2">Account & Lists</div>
+          </Nav.Link>
+          <Nav.Link href="#Orders">
+            <div className="nav-line-1">Returns</div>
+            <div className="nav-line-2">& Orders</div>
+          </Nav.Link>
+          <Nav.Link href="#Prime">
+            <div className="nav-line-1"></div>
+            <div className="nav-line-2">Try Prime</div>
+          </Nav.Link>
+          <Nav.Link href="#ShoppingCart" className="nav-link-right">
+            <div id="nav-cart-count" className="hidden">
+              {cartCount}
+            </div>
+            <div className="nav-cart"></div>
+            <div className="nav-line-2 nav-cart-text">Cart</div>
+          </Nav.Link>
+        </Nav>
       </Navbar>
-      <ListGroup>
-        {items.map((item, i) => {
+      <ListGroup id="search-list">
+        {Array.from(items).map((item, i) => {
           return (
-            <ListGroup.Item key={i} action onClick={handleCompleteClick}>
+            <ListGroup.Item
+              href="#"
+              key={i}
+              data-id={item.id}
+              action
+              onClick={handleCompleteClick}
+            >
               {item.name}
             </ListGroup.Item>
           );
         })}
       </ListGroup>
-      <Navbar variant="dark" expand="sm">
+      <Navbar variant="dark">
         <Nav className="justify-content-center">
-          <Nav.Link href="#deals">Today's Deals</Nav.Link>
-          <Nav.Link href="#best">Best Sellers</Nav.Link>
-          <Nav.Link href="#service">Customer Service</Nav.Link>
-          <Nav.Link href="#gift">Find a Gift</Nav.Link>
-          <Nav.Link href="#releases">New Releases</Nav.Link>
-          <Nav.Link href="#registry">Registry</Nav.Link>
-          <Nav.Link href="#cards">Gift Cards</Nav.Link>
-          <Nav.Link href="#sellers">Sellers</Nav.Link>
-          <Nav.Link href="#amazon">AmazonBasics</Nav.Link>
+          <Nav.Link href="#Address">
+            <div className="nav-dot-icon"></div>
+            <div className="nav-address">
+              <div className="nav-line-3">Hello</div>
+              <div className="nav-line-4">Select your address</div>
+            </div>
+          </Nav.Link>
+          <Nav.Link href="#deals" className="nav-bottom-links nav-first-bottom">
+            Today's Deals
+          </Nav.Link>
+          <Nav.Link href="#best" className="nav-bottom-links">
+            Best Sellers
+          </Nav.Link>
+          <Nav.Link href="#service" className="nav-bottom-links">
+            Customer Service
+          </Nav.Link>
+          <Nav.Link href="#gift" className="nav-bottom-links">
+            Find a Gift
+          </Nav.Link>
+          <Nav.Link href="#releases" className="nav-bottom-links">
+            New Releases
+          </Nav.Link>
+          <Nav.Link href="#registry" className="nav-bottom-links">
+            Registry
+          </Nav.Link>
+          <Nav.Link href="#cards" className="nav-bottom-links">
+            Gift Cards
+          </Nav.Link>
+          <Nav.Link href="#sellers" className="nav-bottom-links">
+            Sellers
+          </Nav.Link>
+          <Nav.Link href="#amazon" className="nav-bottom-links">
+            Saskatchewanazon Basics
+          </Nav.Link>
         </Nav>
       </Navbar>
     </div>
   );
 };
-//old class name mr-auto for nav
 
 export default InputForm;

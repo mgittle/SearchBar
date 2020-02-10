@@ -17,7 +17,7 @@ const connection = mysql.createConnection(mysqlConfig);
 const getProducts = function(inputString, currentCategory, callback) {
   if (currentCategory !== "All") {
     connection.query(
-      `SELECT p.name FROM Products p 
+      `SELECT p.name, p.id FROM Products p 
       INNER JOIN Categories c 
       ON p.category_id = c.id 
       WHERE p.name LIKE '${inputString}%' AND c.name = '${currentCategory}'`,
@@ -31,7 +31,7 @@ const getProducts = function(inputString, currentCategory, callback) {
     );
   } else {
     connection.query(
-      `SELECT name from Products WHERE name LIKE '${inputString}%'`,
+      `SELECT name, id from Products WHERE name LIKE '${inputString}%'`,
       (err, data) => {
         if (err) {
           throw err;

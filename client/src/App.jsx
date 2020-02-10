@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import data from "./CanadianAPISorryEh.js";
 import InputForm from "./components/InputForm.jsx";
 
 class App extends React.Component {
@@ -11,7 +10,8 @@ class App extends React.Component {
       items: [],
       categories: [],
       currentCategory: "All",
-      input: ""
+      input: "",
+      cartCount: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,6 +22,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    window.addEventListener("cart", event => {
+      var newCount = this.state.cartCount + Number(event.detail.count);
+      this.setState({ cartCount: newCount }, () => {
+        if (`${this.state.cartCount}`.length === 2) {
+          document.getElementById("nav-cart-count").classList.add("long-count");
+        }
+        document.getElementById("nav-cart-count").classList.remove("hidden");
+      });
+    });
+
     axios
       .get(
         "http://nodedockersearch-env.z6b7pgpgn9.us-east-2.elasticbeanstalk.com/categories"
@@ -38,17 +48,48 @@ class App extends React.Component {
 
   handleChange(event) {
     var input = event.target.value;
+    var element = document.getElementsByClassName("list-group")[0];
+    element.classList.add("hidden");
     this.setState(
       {
         input: input
       },
       () => {
-        var element = document.getElementsByClassName("list-group")[0];
-        if (!input) {
-          element.classList.add("hidden");
-        } else {
-          element.classList.remove("hidden");
-        }
+        axios
+          .get(
+            "http://nodedockersearch-env.z6b7pgpgn9.us-east-2.elasticbeanstalk.com/products",
+            {
+              params: {
+                inputString: this.state.input,
+                currentCategory: this.state.currentCategory
+              }
+            }
+          )
+          .then(response => {
+            this.setState(
+              {
+                items: response.data
+              },
+              () => {
+                if (this.state.input) {
+                  element.classList.remove("hidden");
+                }
+              }
+            );
+          })
+          .catch(err => {
+            console.error("warning, error, please head to the nearest exit");
+          });
+      }
+    );
+  }
+
+  handleSelect(event, eventkey) {
+    this.setState(
+      {
+        currentCategory: eventkey.target.innerHTML
+      },
+      () => {
         axios
           .get(
             "http://nodedockersearch-env.z6b7pgpgn9.us-east-2.elasticbeanstalk.com/products",
@@ -71,31 +112,26 @@ class App extends React.Component {
     );
   }
 
-  handleSelect(event, eventkey) {
-    this.setState({
-      currentCategory: eventkey.target.innerHTML
-    });
-  }
-
   handleSubmit(event) {
     event.preventDefault();
-    alert(this.state.input);
+    //placeholder for submit functionality
   }
 
   handleCompleteClick(event) {
     this.setState(
       {
-        input: event.target.innerHTML,
+        input: "",
         showSuggestions: false
       },
       () => {
-        alert(this.state.input);
+        document.getElementById("search-input").value = "";
+        document.getElementById("search-list").classList.add("hidden");
       }
     );
   }
 
   handleClick(event) {
-    alert(this.state.input);
+    //placeholder for submit button functionality
   }
 
   //post data from API to database
@@ -131,6 +167,7 @@ class App extends React.Component {
             categories={this.state.categories}
             currentCategory={this.state.currentCategory}
             items={this.state.items.slice(0, 10)}
+            cartCount={this.state.cartCount}
           />
         </div>
       </div>

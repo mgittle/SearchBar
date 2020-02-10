@@ -1,11 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
-
 body {
-  font-family: "Montserrat", sans-serif;
-}
-
-.hidden {
-  display: none;
+  font-family: "Amazon Ember", Arial, sans-serif;
 }
 
 .show {
@@ -13,36 +7,65 @@ body {
 }
 
 .btn-primary {
-  color: #fff;
+  color: #000;
   background-color: #db552d;
   border-color: #db552d;
 }
 
+.btn-primary:hover {
+  color: #000;
+  background-color: #c55d20;
+  border-color: #c55d20;
+}
+
+.btn-primary:active {
+  background-color: #c55d20 !important;
+  box-shadow: 0 0 0 0.2rem rgba(211, 120, 35, 0.5) !important;
+  border-color: #c55d20 !important;
+  color: #000 !important;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(211, 120, 35, 0.5);
+}
+
 .navbar {
   background-color: #232e3e;
+  padding: 0;
+  min-width: 1360px;
 }
 
 .list-group {
   z-index: 99;
   position: absolute;
-  left: 20%;
-  margin-top: -5px;
-  width: 100%;
+  left: 215px;
+  margin-top: -9px;
+  width: 50.2%;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .list-group-item {
   white-space: nowrap;
   display: block;
-  width: 945px;
   overflow: hidden;
   text-overflow: ellipsis;
+  border: none;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #fff;
+  border-color: #fff;
+  color: black;
 }
 
 form {
   margin-bottom: -15px;
   margin-top: -10px;
-  width: 1000px;
+  width: 50%;
   height: 40px;
+  min-width: 200px;
 }
 
 .form-control {
@@ -50,7 +73,7 @@ form {
   background-clip: border-box;
 }
 
-img {
+#logo-nav {
   margin-top: -10px;
   width: 200px;
   height: 60px;
@@ -60,28 +83,114 @@ img {
   height: 40px;
 }
 
-.navbar-expand-sm {
-  justify-content: center;
-}
-
 .nav-link {
   font-size: 12px;
 }
 
-/* #navbar.nav-bluebeacon #nav-search #nav-search-submit-text.nav-sprite {
-    background-position: -10px -290px;
-    width: 21px;
-    height: 21px;
+.nav-line-1 {
+  font-size: 12px;
+  line-height: 14px;
+  height: 14px;
+  font-weight: 400;
+  margin-top: 9px;
 }
 
-#navbar.nav-bluebeacon #nav-search .nav-search-submit {
-  background-color: #febd69;
-  background-image: none;
-  border: none;
-  width: 45px;
+.nav-line-2 {
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 700;
+  padding-bottom: 5px;
+  color: #fff;
 }
 
-#navbar .nav-sprite {
+.nav-globe {
+  position: relative;
+  background: url(https://m.media-amazon.com/images/G/01/AUIClients/InternationalCustomerPreferencesNavAssets-icp_sprite-0b528ccc99b2eed18447291de6df851bc2c6fe68._V2_.png);
+  background-position: -77px -24px;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+
+.nav-dot-icon {
   background-image: url(https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global_bluebeacon-2x_optimized_layout1._CB468670774_.png);
   background-size: 350px;
-} */
+  width: 22px;
+  height: 22px;
+  background-position: -68px -340px;
+  display: inline-block;
+}
+
+.nav-address {
+  display: inline-block;
+}
+
+.nav-line-3 {
+  font-size: 12px;
+  line-height: 14px;
+  height: 14px;
+  font-weight: 400;
+}
+
+.nav-line-4 {
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 700;
+  padding-bottom: 5px;
+  color: #fff;
+}
+
+.nav-bottom-links {
+  padding-top: 15px;
+  font-size: 13px;
+}
+
+.nav-first-bottom {
+  margin-left: 100px;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.nav-cart {
+  background-image: url(https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global_bluebeacon-2x_optimized_layout1._CB468670774_.png);
+  background-size: 350px;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  top: 15px;
+  background-position: -10px -340px;
+  width: 38px;
+  height: 26px;
+}
+
+.nav-cart-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 25px;
+  margin-left: -3px;
+}
+
+#nav-cart-count {
+  display: inline-block;
+  color: #f08804;
+  font-weight: 700;
+  font-size: 16px;
+  position: absolute;
+  margin-left: 18px;
+  margin-top: 8px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.long-count {
+  margin-left: 13px !important;
+}
+
+.nav-link-right {
+  margin-right: -20px;
+}
